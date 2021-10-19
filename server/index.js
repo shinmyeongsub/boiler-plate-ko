@@ -1,6 +1,5 @@
 const express = require('express')
-const app = express()
-const port = 5000
+const app = express();
 const bodyParser = require('body-parser');
 const {User} = require("./models/User");
 const cookieParser = require('cookie-parser');
@@ -26,6 +25,10 @@ mongoose.connect('mongodb+srv://shin:1234@boilerplate.ofxdu.mongodb.net/myFirstD
 
 
 app.get('/', (req, res) => res.send('Hello Wolrd!'))
+
+app.get('/api/hello',(req,res)=>{
+    res.send("안녕하세요 ~  ")
+})
 
 // 회원가입  기능 구현
 app.post('api/users/register',(req,res)=>{
@@ -100,5 +103,7 @@ app.get('/api/users/logout',auth,(req,res) =>{
             })
         })
 })
+
+const port = 5000;
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
