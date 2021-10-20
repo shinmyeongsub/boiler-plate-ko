@@ -31,7 +31,7 @@ app.get('/api/hello',(req,res)=>{
 })
 
 // 회원가입  기능 구현
-app.post('api/users/register',(req,res)=>{
+app.post('/api/users/register',(req,res)=>{
 
     // 회원 가입시 필요한 정보들을 client에서 가져오면
     // 그것들을 데이터 베이스에 넣어준다.
@@ -93,6 +93,7 @@ app.get('/api/users/auth', auth ,(req,res) =>{
     })
 })
 
+// 로그아웃
 app.get('/api/users/logout',auth,(req,res) =>{
     User.findOneAndUpdate({_id:req.user._id},
         {token : ""},
